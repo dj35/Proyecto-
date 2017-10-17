@@ -13,7 +13,7 @@ public static boolean horaValida(int hora, int minutos){
 
 //Compara hora/minutos con el horario (10-14:30 y 17:30-21 en este ejemplo)
 public static boolean horarioApertura(int hora, int minutos){
-  if (hora<10 || hora>21 || (hora>15 && hora<17)){
+  if (hora<10 || hora>=21 || (hora>15 && hora<17)){
     return false;
   } else if (hora==14){
     if (minutos>30){
@@ -32,8 +32,8 @@ public static boolean horarioApertura(int hora, int minutos){
   }
 }    
 
-  public static void main (String[]args){
-//Este scanner fuera de la funcion para que despues de comprobar si la hora/minutos son validos usemos los valores para comparar con el horario.
+//Funcion principal horario (llama a horaValida para ver si la hora es valida y a horarioApertura para ver si esta en el rango de horas correspondiente
+  public static void horario(){
     int hora, minutos;
     Scanner dj=new Scanner(System.in);
 //Lee hora y minutos y llama a la función haste que tenga un valor valido  
@@ -49,6 +49,10 @@ public static boolean horarioApertura(int hora, int minutos){
     } else {
       System.out.println("Lo siento, la librería está cerrada...FeelsBadMan");
     }
+  }
+  
+  public static void main (String[]args){
+    horario();
  }
 }
 
