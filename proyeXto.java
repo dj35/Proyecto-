@@ -51,8 +51,46 @@ public static boolean horarioApertura(int hora, int minutos){
     }
   }
   
+//Lee título y género de una cantidad de libros determinada por el usuario y cuenta cuántos hay de cada genero.
+  public static void contadorGeneros(){
+    int cantidad;
+    int genero1=0, genero2=0, genero3=0, genero4=0, genero5=0;
+    Scanner dj=new Scanner(System.in);
+    System.out.println("¿Cuántos libros vas a introducir?");
+    cantidad= dj.nextInt();
+    for (int i=0; i<cantidad; i++){
+      System.out.println("Introduce el titulo del libro: ");
+      String libro=dj.next();
+      System.out.println("Introduce el numero correspondiente al género del libro:"+'\n'+"1. Genero A"+'\n'+"2. Genero B"+'\n'+"3. Genero C"+'\n'+"4. Genero D"+'\n'+"5. Genero E");
+      int genero=dj.nextInt();
+      switch (genero){
+        case 1:
+          genero1 += 1;
+          break;
+        case 2:
+          genero2 += 1;
+          break;
+        case 3:
+          genero3 += 1;
+          break;
+        case 4:
+          genero4 += 1;
+          break;
+        case 5:
+          genero5 += 1;
+          break;
+        default:
+          break;
+      }
+    }
+    System.out.println("Genero A: "+genero1+" libros"+'\n'+"Genero B: "+genero2+" libros"+'\n'+"Genero C: "+genero3+" libros"+'\n'+"Genero D: "+genero4+" libros"+'\n'+"Genero E: "+genero5+" libros");
+  }
+       
+  
   public static void main (String[]args){
+//A estas funciones las llamamos desde la funcion menu.
     horario();
+    contadorGeneros();
  }
 }
 
