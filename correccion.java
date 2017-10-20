@@ -1,5 +1,5 @@
 //
-//TODO ESTO YA ESTA METIDO EN PROXECTO.java
+//TODO ESTO YA ESTA METIDO EN PROYEXTO.java
 //
 import java.util.Scanner;
 public class correccion{
