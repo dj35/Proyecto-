@@ -93,10 +93,3 @@ public static boolean horarioApertura(int hora, int minutos){
     contadorGeneros();
  }
 }
-
-    
-    
-    
-
-
-  
