@@ -1,6 +1,21 @@
 import java.util.Scanner;
 public class proyeXto{
   
+//Vamos a definir la función de menú
+public static int menu(){
+  System.out.println("Seleccione la opción que desea ejecutar: ");
+  System.out.println("1. Añadir libro");
+  System.out.println("2. Pedir recomendaciones");
+  System.out.println("3. Valorar libro");
+  System.out.println("4. Contar libros según criterio");
+  System.out.println("5. ¿Estamos abiertos?");
+  System.out.println("6. ¿Tengo algún descuento?");
+//System.out.println("s/n. Ordenar libros según criterio");  ESTA SE COMENTA PORQUE LO MISMO NO SE IMPLEMENTA
+
+  Scanner sc = new Scanner(System.in);
+  return sc.nextInt();
+}
+  
 //Comprueba que la hora está entre 0-24 y los minutos entre 0-60
 public static boolean horaValida(int hora, int minutos){
   if (hora>=0 && hora<24 && minutos>=0 && minutos<60){
@@ -49,6 +64,7 @@ public static boolean horarioApertura(int hora, int minutos){
     } else {
       System.out.println("Lo siento, la librería está cerrada...FeelsBadMan");
     }
+    menu();
   }
   
 //Lee título y género de una cantidad de libros determinada por el usuario y cuenta cuántos hay de cada genero.
@@ -80,16 +96,56 @@ public static boolean horarioApertura(int hora, int minutos){
           genero5 += 1;
           break;
         default:
+          System.out.println("Error");
           break;
       }
     }
     System.out.println("Genero A: "+genero1+" libros"+'\n'+"Genero B: "+genero2+" libros"+'\n'+"Genero C: "+genero3+" libros"+'\n'+"Genero D: "+genero4+" libros"+'\n'+"Genero E: "+genero5+" libros");
+    menu();
   }
-       
+    
+//Descuentos
+  public static void descuento(){
+    Scanner dj=new Scanner(System.in);
+    System.out.println("¿Qué edad tienes?");
+    int edad=dj.nextInt();
+  }
+        
   
   public static void main (String[]args){
-//A estas funciones las llamamos desde la funcion menu.
-    horario();
-    contadorGeneros();
- }
+    boolean seguir = false;
+    do{
+      switch (menu()){
+      case 1:
+        seguir=false;
+        break;
+        
+      case 2:
+        seguir=false;
+        break;
+        
+      case 3:
+        seguir=false;
+        break;
+        
+      case 4:
+        seguir=false;
+        contadorGeneros();
+        break;
+        
+      case 5:
+        seguir=false;
+        horario();
+        break;
+        
+      case 6:
+        seguir=false;
+        break;
+        
+      default: 
+        System.out.println("Opción incorrecta, pruebe otra vez");
+        seguir=true;    
+      }
+    }while(seguir);
+  }
 }
