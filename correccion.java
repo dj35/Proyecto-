@@ -1,18 +1,21 @@
+//
+//TODO ESTO YA ESTA METIDO EN PROXECTO.java
+//
 import java.util.Scanner;
 public class correccion{
 
-  // Vamos a definir la función de menú
+  // Vamos a definir la funciÃ³n de menÃº
   
   public static int menu(){
     
-    System.out.println("Seleccione la opción que desea ejecutar: ");
-    System.out.println("1. Añadir libro");
+    System.out.println("Seleccione la opciÃ³n que desea ejecutar: ");
+    System.out.println("1. AÃ±adir libro");
     System.out.println("2. Pedir recomendaciones");
     System.out.println("3. Valorar libro");
-    System.out.println("4. Contar libros según criterio");
-    System.out.println("5. ¿Estamos abiertos?");
-    System.out.println("6. ¿Tengo algún descuento?");
-    //System.out.println("s/n. Ordenar libros según criterio");  ESTA SE COMENTA PORQUE LO MISMO NO SE IMPLEMENTA
+    System.out.println("4. Contar libros segÃºn criterio");
+    System.out.println("5. Â¿Estamos abiertos?");
+    System.out.println("6. Â¿Tengo algÃºn descuento?");
+    //System.out.println("s/n. Ordenar libros segÃºn criterio");  ESTA SE COMENTA PORQUE LO MISMO NO SE IMPLEMENTA
 
     Scanner sc = new Scanner(System.in);
     return sc.nextInt();
@@ -74,7 +77,7 @@ public class correccion{
         break;
         
       default: 
-        System.out.println("Opción incorrecta, pruebe otra vez");
+        System.out.println("OpciÃ³n incorrecta, pruebe otra vez");
         seguir=true;
         
     }
