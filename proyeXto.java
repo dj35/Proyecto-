@@ -109,6 +109,21 @@ public static boolean horarioApertura(int hora, int minutos){
     Scanner dj=new Scanner(System.in);
     System.out.println("¿Qué edad tienes?");
     int edad=dj.nextInt();
+    if (edad<18||edad>65){
+      System.out.println("Genial tienes un descuento del 10% en todos los libros :)");
+    }else{
+      System.out.println("Vaya,prueba con otra cosa \n Pulse 1 Si es cliente premium de la librería\n Pulse 2 si tiene familia numerosa\n Pulse 3 si está en paro\n Pulse cualquier otro número si no cumle ninguno de los requisitos");
+      int opcionDescuento=dj.nextInt();
+      switch (opcionDescuento){
+        case 1: case 2: case 3:
+          System.out.println("Genial tienes un descuento del 10% en todos los libros :)");
+          break;
+        default:
+          System.out.println("Vaya, no tienes ningún descuento");
+          break;  
+      }
+    }
+    menu();
   }
         
   
@@ -140,6 +155,7 @@ public static boolean horarioApertura(int hora, int minutos){
         
       case 6:
         seguir=false;
+        descuento();
         break;
         
       default: 
