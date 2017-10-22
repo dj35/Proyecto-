@@ -1,4 +1,6 @@
-    
+//
+//YA HE METIDO ESTO EN PROYEXTO
+//
 //Mirad a ver si os parece bien esta función para descuentos
   public static void descuento(){
     Scanner dj=new Scanner(System.in);
