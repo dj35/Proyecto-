@@ -149,6 +149,7 @@ public class proyeXto_v2{
   public static void descuento(String[][]libreria, Scanner sc){
     System.out.println("¿Qué edad tienes?");
     int edad=0;
+    //Evitar edad negativa
     boolean repetir=true;
     while(repetir){
       edad=sc.nextInt();
@@ -158,6 +159,7 @@ public class proyeXto_v2{
         System.out.println("Introduce la edad correctamente");
       }
     }
+    //Descuentos
     if (edad<18||edad>65){
       System.out.println("Genial tienes un descuento del 10% en todos los libros :)");
     }else{
@@ -176,7 +178,7 @@ public class proyeXto_v2{
   }
   
   
-//FUNCIÓN VER LIBRERIA (tabla)
+//FUNCIÓN VER LIBRERIA (en forma de tabla)
   public static void verLibreria(String[][]libreria, Scanner sc){
     String verTabla= "";
     for (int i=0; i<7; i++){
@@ -190,7 +192,7 @@ public class proyeXto_v2{
   }
   
   
-//FUNCIÓN AÑADIR LIBRO
+//FUNCIÓN AÑADIR LIBRO (con sus atributos)
   public static void anadirLibro(String[][]libreria,Scanner sc){
     for (int j=1; j<7; j++){
       if (libreria[j][0]==""){
@@ -218,7 +220,7 @@ public class proyeXto_v2{
         System.out.println(l+". "+libreria[l][0]);
       }
     }
-    //Modifica la valoración si existe el libro
+    //Modifica la valoración solo si existe el libro
     int numLibro=sc.nextInt();
     if (libreria[numLibro][0]==""){
       System.out.println("No trolles, no hay nada ahí!");
