@@ -91,13 +91,12 @@ public class proyeXto_v2{
 //FUNCION PRINCIPAL HORARIO (llama a horaValida para ver si la hora es valida y a horarioApertura para ver si esta en el rango de horas correspondiente
   public static void horario(String[][]libreria, Scanner sc){
     int hora, minutos;
-    Scanner dj=new Scanner(System.in);
 //Lee hora y minutos y llama a la función haste que tenga un valor valido  
     do {
       System.out.println("Introduce la hora");
-      hora = dj.nextInt();
+      hora = sc.nextInt();
       System.out.println("Introduce los minutos");
-      minutos = dj.nextInt();
+      minutos = sc.nextInt();
     } while (horaValida(hora, minutos));
 //Abierta/cerrada
     if (horarioApertura(hora, minutos)){
@@ -113,14 +112,13 @@ public class proyeXto_v2{
   public static void contadorGeneros(String[][]libreria, Scanner sc){
     int cantidad;
     int genero1=0, genero2=0, genero3=0, genero4=0, genero5=0;
-    Scanner dj=new Scanner(System.in);
     System.out.println("¿Cuántos libros vas a introducir?");
-    cantidad= dj.nextInt();
+    cantidad= sc.nextInt();
     for (int i=0; i<cantidad; i++){
       System.out.println("Introduce el titulo del libro: ");
-      String libro=dj.next();
+      String libro=sc.next();
       System.out.println("Introduce el numero correspondiente al género del libro:"+'\n'+"1. Genero A"+'\n'+"2. Genero B"+'\n'+"3. Genero C"+'\n'+"4. Genero D"+'\n'+"5. Genero E");
-      int genero=dj.nextInt();
+      int genero=sc.nextInt();
       switch (genero){
         case 1:
           genero1 += 1;
@@ -149,14 +147,22 @@ public class proyeXto_v2{
   
 //FUNCIÓN DESCUENTOS
   public static void descuento(String[][]libreria, Scanner sc){
-    Scanner dj=new Scanner(System.in);
     System.out.println("¿Qué edad tienes?");
-    int edad=dj.nextInt();
+    int edad=0;
+    boolean repetir=true;
+    while(repetir){
+      edad=sc.nextInt();
+      if (edad>0){
+        repetir = false;
+      } else {
+        System.out.println("Introduce la edad correctamente");
+      }
+    }
     if (edad<18||edad>65){
       System.out.println("Genial tienes un descuento del 10% en todos los libros :)");
     }else{
-      System.out.println("Vaya,prueba con otra cosa \n Pulse 1 Si es cliente premium de la librería\n Pulse 2 si tiene familia numerosa\n Pulse 3 si está en paro\n Pulse cualquier otro número si no cumle ninguno de los requisitos");
-      int opcionDescuento=dj.nextInt();
+      System.out.println("Vaya, prueba con otra cosa: \n Pulse 1 Si es cliente premium de la librería\n Pulse 2 si tiene familia numerosa\n Pulse 3 si está en paro\n Pulse cualquier otro número si no cumple ninguno de los requisitos");
+      int opcionDescuento=sc.nextInt();
       switch (opcionDescuento){
         case 1: case 2: case 3:
           System.out.println("Genial tienes un descuento del 10% en todos los libros :)");
