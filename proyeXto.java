@@ -1,17 +1,18 @@
+//VERSION CON PROBLEMAS PARA LLAMAR A LAS FUNCIONES CON ARRAYS; CORREGIDO EN V2
 import java.util.Scanner;
 public class proyeXto{
   
-//FUNCI”N MEN⁄
+//FUNCI√ìN MEN√ö
   public static void menu(){
-    System.out.println("Seleccione la opciÛn que desea ejecutar: ");
-    System.out.println("1. AÒadir libro");
+    System.out.println("Seleccione la opci√≥n que desea ejecutar: ");
+    System.out.println("1. A√±adir libro");
     System.out.println("2. Ver libreria ahora");
     System.out.println("3. Valorar libro");
-    System.out.println("4. Contar libros seg˙n criterio");
-    System.out.println("5. øEstamos abiertos?");
-    System.out.println("6. øTengo alg˙n descuento?");
+    System.out.println("4. Contar libros seg√∫n criterio");
+    System.out.println("5. ¬øEstamos abiertos?");
+    System.out.println("6. ¬øTengo alg√∫n descuento?");
     System.out.println("7. Pedir recomendaciones");
-//System.out.println("s/n. Ordenar libros seg˙n criterio");  ESTA SE COMENTA PORQUE LO MISMO NO SE IMPLEMENTA
+//System.out.println("s/n. Ordenar libros seg√∫n criterio");  ESTA SE COMENTA PORQUE LO MISMO NO SE IMPLEMENTA
     Scanner sc=new Scanner (System.in);
 //Hay que meter el switch en menu en vez de main porque sino despues de hacer una de las opciones no vuelve al switch.   
     boolean seguir = false; 
@@ -47,14 +48,14 @@ public class proyeXto{
           break;
           
         default: 
-          System.out.println("OpciÛn incorrecta, pruebe otra vez");
+          System.out.println("Opci√≥n incorrecta, pruebe otra vez");
           seguir=true;    
       }
     }while(seguir);
   }
   
   
-//Comprueba que la hora est· entre 0-24 y los minutos entre 0-60
+//Comprueba que la hora est√° entre 0-24 y los minutos entre 0-60
   public static boolean horaValida(int hora, int minutos){
     if (hora>=0 && hora<24 && minutos>=0 && minutos<60){
       return false;
@@ -91,7 +92,7 @@ public class proyeXto{
   public static void horario(){
     int hora, minutos;
     Scanner dj=new Scanner(System.in);
-//Lee hora y minutos y llama a la funciÛn haste que tenga un valor valido  
+//Lee hora y minutos y llama a la funci√≥n haste que tenga un valor valido  
     do {
       System.out.println("Introduce la hora");
       hora = dj.nextInt();
@@ -100,25 +101,25 @@ public class proyeXto{
     } while (horaValida(hora, minutos));
 //Abierta/cerrada
     if (horarioApertura(hora, minutos)){
-      System.out.println("°QuÈ bien! La librerÌa est· abierta");
+      System.out.println("¬°Qu√© bien! La librer√≠a est√° abierta");
     } else {
-      System.out.println("Lo siento, la librerÌa est· cerrada...FeelsBadMan");
+      System.out.println("Lo siento, la librer√≠a est√° cerrada...FeelsBadMan");
     }
     menu();
   }
   
   
-//FUNCI”N CONTAR G…NEROS (Lee tÌtulo y gÈnero de una cantidad de libros determinada por el usuario y cuenta cu·ntos hay de cada genero.)
+//FUNCI√ìN CONTAR G√âNEROS (Lee t√≠tulo y g√©nero de una cantidad de libros determinada por el usuario y cuenta cu√°ntos hay de cada genero.)
   public static void contadorGeneros(){
     int cantidad;
     int genero1=0, genero2=0, genero3=0, genero4=0, genero5=0;
     Scanner dj=new Scanner(System.in);
-    System.out.println("øCu·ntos libros vas a introducir?");
+    System.out.println("¬øCu√°ntos libros vas a introducir?");
     cantidad= dj.nextInt();
     for (int i=0; i<cantidad; i++){
       System.out.println("Introduce el titulo del libro: ");
       String libro=dj.next();
-      System.out.println("Introduce el numero correspondiente al gÈnero del libro:"+'\n'+"1. Genero A"+'\n'+"2. Genero B"+'\n'+"3. Genero C"+'\n'+"4. Genero D"+'\n'+"5. Genero E");
+      System.out.println("Introduce el numero correspondiente al g√©nero del libro:"+'\n'+"1. Genero A"+'\n'+"2. Genero B"+'\n'+"3. Genero C"+'\n'+"4. Genero D"+'\n'+"5. Genero E");
       int genero=dj.nextInt();
       switch (genero){
         case 1:
@@ -146,22 +147,22 @@ public class proyeXto{
   }
   
   
-//FUNCI”N DESCUENTOS
+//FUNCI√ìN DESCUENTOS
   public static void descuento(){
     Scanner dj=new Scanner(System.in);
-    System.out.println("øQuÈ edad tienes?");
+    System.out.println("¬øQu√© edad tienes?");
     int edad=dj.nextInt();
     if (edad<18||edad>65){
       System.out.println("Genial tienes un descuento del 10% en todos los libros :)");
     }else{
-      System.out.println("Vaya,prueba con otra cosa \n Pulse 1 Si es cliente premium de la librerÌa\n Pulse 2 si tiene familia numerosa\n Pulse 3 si est· en paro\n Pulse cualquier otro n˙mero si no cumle ninguno de los requisitos");
+      System.out.println("Vaya,prueba con otra cosa \n Pulse 1 Si es cliente premium de la librer√≠a\n Pulse 2 si tiene familia numerosa\n Pulse 3 si est√° en paro\n Pulse cualquier otro n√∫mero si no cumle ninguno de los requisitos");
       int opcionDescuento=dj.nextInt();
       switch (opcionDescuento){
         case 1: case 2: case 3:
           System.out.println("Genial tienes un descuento del 10% en todos los libros :)");
           break;
         default:
-          System.out.println("Vaya, no tienes ning˙n descuento");
+          System.out.println("Vaya, no tienes ning√∫n descuento");
           break;  
       }
     }
@@ -169,7 +170,7 @@ public class proyeXto{
   }
   
   
-//FUNCI”N VER LIBRERIA (tabla)
+//FUNCI√ìN VER LIBRERIA (tabla)
   public static void verLibreria(String[][]libreria){
     String verTabla= "";
     for (int i=0; i<7; i++){
@@ -182,19 +183,19 @@ public class proyeXto{
     //menu();
   }
   
-//FUNCI”N A—ADIR LIBRO
+//FUNCI√ìN A√ëADIR LIBRO
   public static void anadirLibro(String[][]libreria,Scanner sc){
     for (int j=1; j<7; j++){
       if (libreria[j][0]==""){
-        System.out.println("Introduce el tÌtulo:");
+        System.out.println("Introduce el t√≠tulo:");
         libreria[j][0]=sc.next();
         System.out.println("Introduce el autor:");
         libreria[j][1]=sc.next(); 
-        System.out.println("Introduce el gÈnero:");
+        System.out.println("Introduce el g√©nero:");
         libreria[j][2]=sc.next(); 
-        System.out.println("Introduce el aÒo:");
+        System.out.println("Introduce el a√±o:");
         libreria[j][3]=sc.next(); 
-        System.out.println("Introduce valoraciÛn:");
+        System.out.println("Introduce valoraci√≥n:");
         libreria[j][4]=sc.next();
         break;
       } 
@@ -206,13 +207,13 @@ public class proyeXto{
 //MAIN    
   public static void main (String[]args){
     Scanner sc = new Scanner(System.in);
-    //Inicializa un array (7 filas->6 libros, 5 columnas->tÌtulo+4 atributos)
+    //Inicializa un array (7 filas->6 libros, 5 columnas->t√≠tulo+4 atributos)
     String[][]libreria=new String[7][5]; 
-    libreria[0][0]="TÕTULO";
+    libreria[0][0]="T√çTULO";
     libreria[0][1]="AUTOR";
-    libreria[0][2]="G…NERO";
-    libreria[0][3]="A—O";
-    libreria[0][4]="VALORACI”N";
+    libreria[0][2]="G√âNERO";
+    libreria[0][3]="A√ëO";
+    libreria[0][4]="VALORACI√ìN";
     for (int c=1; c<7; c++){
       for (int d=0; d<5; d++){
         libreria[c][d]="";
