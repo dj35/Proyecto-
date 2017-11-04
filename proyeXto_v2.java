@@ -28,6 +28,7 @@ public class proyeXto_v2{
           break;             
         case 3:
           seguir=false;
+          valorarLibro(libreria, sc);
           break;
         case 4:
           seguir=false;
@@ -43,6 +44,7 @@ public class proyeXto_v2{
           break;
         case 7:
           seguir=false;
+          //falta esta
           break;
           
         default: 
@@ -181,6 +183,7 @@ public class proyeXto_v2{
     menu(libreria, sc);
   }
   
+  
 //FUNCIÓN AÑADIR LIBRO
   public static void anadirLibro(String[][]libreria,Scanner sc){
     for (int j=1; j<7; j++){
@@ -193,13 +196,35 @@ public class proyeXto_v2{
         libreria[j][2]=sc.next(); 
         System.out.println("Introduce el año:");
         libreria[j][3]=sc.next(); 
-        System.out.println("Introduce valoración:");
-        libreria[j][4]=sc.next();
         break;
       } 
     }
     verLibreria(libreria, sc);
   }
+  
+
+//FUNCION VALORAR LIBRO
+  public static void valorarLibro(String[][]libreria, Scanner sc){
+    System.out.println("¿Qué libro quieres valorar?");
+    //Muestra los libros
+    for(int l=1; l<7; l++){
+      if (libreria[l][0]!=""){
+        System.out.println(l+". "+libreria[l][0]);
+      }
+    }
+    //Modifica la valoración si existe el libro
+    int numLibro=sc.nextInt();
+    if (libreria[numLibro][0]==""){
+      System.out.println("No trolles, no hay nada ahí!");
+    } else {
+      System.out.println("Introduce/modifica la valoración:");
+      libreria[numLibro][4]=sc.next();
+    }
+    menu(libreria, sc);
+  }
+     
+    
+//FUNCION PEDIR RECOMENDACIONES?
   
   
 //MAIN    
@@ -217,9 +242,7 @@ public class proyeXto_v2{
         libreria[c][d]="";
       }
     }
-    
     menu(libreria, sc);
-    
   }
 }
    
