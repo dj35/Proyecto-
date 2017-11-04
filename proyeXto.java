@@ -1,4 +1,6 @@
+//
 //VERSION CON PROBLEMAS PARA LLAMAR A LAS FUNCIONES CON ARRAYS; CORREGIDO EN V2
+//
 import java.util.Scanner;
 public class proyeXto{
   
