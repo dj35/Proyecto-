@@ -1,53 +1,93 @@
 import java.util.Scanner;
 public class proyeXto{
   
-//Vamos a definir la función de menú
-public static int menu(){
-  System.out.println("Seleccione la opción que desea ejecutar: ");
-  System.out.println("1. Añadir libro");
-  System.out.println("2. Pedir recomendaciones");
-  System.out.println("3. Valorar libro");
-  System.out.println("4. Contar libros según criterio");
-  System.out.println("5. ¿Estamos abiertos?");
-  System.out.println("6. ¿Tengo algún descuento?");
+//FUNCIÓN MENÚ
+  public static void menu(){
+    System.out.println("Seleccione la opción que desea ejecutar: ");
+    System.out.println("1. Añadir libro");
+    System.out.println("2. Ver libreria ahora");
+    System.out.println("3. Valorar libro");
+    System.out.println("4. Contar libros según criterio");
+    System.out.println("5. ¿Estamos abiertos?");
+    System.out.println("6. ¿Tengo algún descuento?");
+    System.out.println("7. Pedir recomendaciones");
 //System.out.println("s/n. Ordenar libros según criterio");  ESTA SE COMENTA PORQUE LO MISMO NO SE IMPLEMENTA
-
-  Scanner sc = new Scanner(System.in);
-  return sc.nextInt();
-}
+    Scanner sc=new Scanner (System.in);
+//Hay que meter el switch en menu en vez de main porque sino despues de hacer una de las opciones no vuelve al switch.   
+    boolean seguir = false; 
+    do{
+      switch (sc.nextInt()){
+        case 1:
+          seguir=false;
+          //anadirLibro(libreria, sc) no funciona si se le llama desde aqui...arreglado en v.2
+          //en esta version solo se le llama desde main
+          break;
+        case 2:
+          seguir=false;
+          //verLibreria(libreria) no funciona si se le llama desde aqui...arreglado en v.2
+          //en esta version solo se le llama desde main
+          break;             
+        case 3:
+          seguir=false;
+          break;
+        case 4:
+          seguir=false;
+          contadorGeneros();
+          break; 
+        case 5:
+          seguir=false;
+          horario();
+          break;
+        case 6:
+          seguir=false;
+          descuento();
+          break;
+        case 7:
+          seguir=false;
+          break;
+          
+        default: 
+          System.out.println("Opción incorrecta, pruebe otra vez");
+          seguir=true;    
+      }
+    }while(seguir);
+  }
+  
   
 //Comprueba que la hora está entre 0-24 y los minutos entre 0-60
-public static boolean horaValida(int hora, int minutos){
-  if (hora>=0 && hora<24 && minutos>=0 && minutos<60){
-    return false;
-  } else {
-    System.out.println("Error");
-    return true;
+  public static boolean horaValida(int hora, int minutos){
+    if (hora>=0 && hora<24 && minutos>=0 && minutos<60){
+      return false;
+    } else {
+      System.out.println("Error");
+      return true;
+    }
   }
-}
-
+  
+  
 //Compara hora/minutos con el horario (10-14:30 y 17:30-21 en este ejemplo)
-public static boolean horarioApertura(int hora, int minutos){
-  if (hora<10 || hora>=21 || (hora>15 && hora<17)){
-    return false;
-  } else if (hora==14){
-    if (minutos>30){
+  public static boolean horarioApertura(int hora, int minutos){
+    if (hora<10 || hora>=21 || (hora>15 && hora<17)){
       return false;
+    } else if (hora==14){
+      if (minutos>30){
+        return false;
+      } else {
+        return true;
+      }
+    } else if (hora==17){
+      if (minutos<30){
+        return false;
+      } else {
+        return true;
+      }
     } else {
       return true;
     }
-  } else if (hora==17){
-    if (minutos<30){
-      return false;
-    } else {
-      return true;
-    }
-  } else {
-    return true;
-  }
-}    
-
-//Funcion principal horario (llama a horaValida para ver si la hora es valida y a horarioApertura para ver si esta en el rango de horas correspondiente
+  }    
+  
+  
+//FUNCION PRINCIPAL HORARIO (llama a horaValida para ver si la hora es valida y a horarioApertura para ver si esta en el rango de horas correspondiente
   public static void horario(){
     int hora, minutos;
     Scanner dj=new Scanner(System.in);
@@ -67,7 +107,8 @@ public static boolean horarioApertura(int hora, int minutos){
     menu();
   }
   
-//Lee título y género de una cantidad de libros determinada por el usuario y cuenta cuántos hay de cada genero.
+  
+//FUNCIÓN CONTAR GÉNEROS (Lee título y género de una cantidad de libros determinada por el usuario y cuenta cuántos hay de cada genero.)
   public static void contadorGeneros(){
     int cantidad;
     int genero1=0, genero2=0, genero3=0, genero4=0, genero5=0;
@@ -103,8 +144,9 @@ public static boolean horarioApertura(int hora, int minutos){
     System.out.println("Genero A: "+genero1+" libros"+'\n'+"Genero B: "+genero2+" libros"+'\n'+"Genero C: "+genero3+" libros"+'\n'+"Genero D: "+genero4+" libros"+'\n'+"Genero E: "+genero5+" libros");
     menu();
   }
-    
-//Descuentos
+  
+  
+//FUNCIÓN DESCUENTOS
   public static void descuento(){
     Scanner dj=new Scanner(System.in);
     System.out.println("¿Qué edad tienes?");
@@ -125,43 +167,62 @@ public static boolean horarioApertura(int hora, int minutos){
     }
     menu();
   }
-        
   
-  public static void main (String[]args){
-    boolean seguir = false;
-    do{
-      switch (menu()){
-      case 1:
-        seguir=false;
-        break;
-        
-      case 2:
-        seguir=false;
-        break;
-        
-      case 3:
-        seguir=false;
-        break;
-        
-      case 4:
-        seguir=false;
-        contadorGeneros();
-        break;
-        
-      case 5:
-        seguir=false;
-        horario();
-        break;
-        
-      case 6:
-        seguir=false;
-        descuento();
-        break;
-        
-      default: 
-        System.out.println("Opción incorrecta, pruebe otra vez");
-        seguir=true;    
+  
+//FUNCIÓN VER LIBRERIA (tabla)
+  public static void verLibreria(String[][]libreria){
+    String verTabla= "";
+    for (int i=0; i<7; i++){
+      verTabla= "";
+      for (int j=0; j<5; j++){
+        verTabla+= "  "+libreria[i][j];         
       }
-    }while(seguir);
+      System.out.println(verTabla);
+    }
+    //menu();
+  }
+  
+//FUNCIÓN AÑADIR LIBRO
+  public static void anadirLibro(String[][]libreria,Scanner sc){
+    for (int j=1; j<7; j++){
+      if (libreria[j][0]==""){
+        System.out.println("Introduce el título:");
+        libreria[j][0]=sc.next();
+        System.out.println("Introduce el autor:");
+        libreria[j][1]=sc.next(); 
+        System.out.println("Introduce el género:");
+        libreria[j][2]=sc.next(); 
+        System.out.println("Introduce el año:");
+        libreria[j][3]=sc.next(); 
+        System.out.println("Introduce valoración:");
+        libreria[j][4]=sc.next();
+        break;
+      } 
+    }
+    verLibreria(libreria);
+  }
+  
+  
+//MAIN    
+  public static void main (String[]args){
+    Scanner sc = new Scanner(System.in);
+    //Inicializa un array (7 filas->6 libros, 5 columnas->título+4 atributos)
+    String[][]libreria=new String[7][5]; 
+    libreria[0][0]="TÍTULO";
+    libreria[0][1]="AUTOR";
+    libreria[0][2]="GÉNERO";
+    libreria[0][3]="AÑO";
+    libreria[0][4]="VALORACIÓN";
+    for (int c=1; c<7; c++){
+      for (int d=0; d<5; d++){
+        libreria[c][d]="";
+      }
+    }
+    //Para probar anadirLibro y verLibreria:
+    anadirLibro(libreria, sc);
+    anadirLibro(libreria, sc);
+    menu();
+    
   }
 }
+   
