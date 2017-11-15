@@ -242,6 +242,7 @@ public class proyeXto_v2{
     int maximaValoracion = 0;
     String posibleLibroRecomendado = "";
     for(int g = 1; g<8; g++){
+      //gen vamos a tener que ponerlo como string para que funcione esto:
       if(libreria[g][2]==gen){
         if(libreria[g][4]>=maximaValoracion){
           posibleLibroRecomendado = libreria[g][0];
