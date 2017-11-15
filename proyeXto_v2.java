@@ -233,7 +233,23 @@ public class proyeXto_v2{
      
     
 //FUNCION PEDIR RECOMENDACIONES?
-  
+  //La idea es que el usuario indique un género que le guste y la función le devuelva el ejemplar de ese género con mejor valoración
+  public static void recomienda (String[][]libreria, Scanner sc){
+   System.out.println("¿Cuál es tu género favorito?");
+    // Mostrar las distintas opciones
+    System.out.println("1. Género A \n 2. Género B \n ... \n N. Género X");
+    int gen = sc.nextInt();
+    int maximaValoracion = 0;
+    String posibleLibroRecomendado = "";
+    for(int g = 1; g<8; g++){
+      if(libreria[g][2]){
+        if(libreria[g][4]>=maximaValoracion){
+          posibleLibroRecomendado = libreria[g][0];
+        }
+      }
+    }
+    System.out.println("Quizás te guste " + posibleLibroRecomendado + ". Seguro que lo disfrutas :)");
+  }
   
 //MAIN    
   public static void main (String[]args){
