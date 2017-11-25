@@ -181,9 +181,9 @@ public class proyeXto_v2{
 //FUNCIÓN VER LIBRERIA (en forma de tabla)
   public static void verLibreria(String[][]libreria, Scanner sc){
     String verTabla= "";
-    for (int i=0; i<7; i++){
+    for (int i=0; i<libreria.length; i++){
       verTabla= "";
-      for (int j=0; j<5; j++){
+      for (int j=0; j<libreria[0].length; j++){
         verTabla+= "  "+libreria[i][j];         
       }
       System.out.println(verTabla);
@@ -194,7 +194,7 @@ public class proyeXto_v2{
   
 //FUNCIÓN AÑADIR LIBRO (con sus atributos)
   public static void anadirLibro(String[][]libreria,Scanner sc){
-    for (int j=1; j<7; j++){
+    for (int j=1; j<libreria.length; j++){
       if (libreria[j][0]==""){
         System.out.println("Introduce el título:");
         libreria[j][0]=sc.next();
@@ -215,7 +215,7 @@ public class proyeXto_v2{
   public static void valorarLibro(String[][]libreria, Scanner sc){
     System.out.println("¿Qué libro quieres valorar?");
     //Muestra los libros
-    for(int l=1; l<7; l++){
+    for(int l=1; l<libreria.length; l++){
       if (libreria[l][0]!=""){
         System.out.println(l+". "+libreria[l][0]);
       }
