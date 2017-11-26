@@ -240,16 +240,20 @@ public class proyeXto_v2{
     System.out.println("1. Género A \n 2. Género B \n ... \n N. Género X");
     int gen = sc.nextInt();
     int maximaValoracion = 0;
-    String posibleLibroRecomendado = "";
+    String libroRecomendado = "";
     for(int g = 1; g<8; g++){
       //gen vamos a tener que ponerlo como string para que funcione esto:
       if(libreria[g][2]==gen){
         if(libreria[g][4]>=maximaValoracion){
-          posibleLibroRecomendado = libreria[g][0];
+          libroRecomendado = libreria[g][0];
         }
       }
     }
-    System.out.println("Quizás te guste " + posibleLibroRecomendado + ". Seguro que lo disfrutas :)");
+  if(libroRecomendado!=""){
+    System.out.println("Quizás te guste " + libroRecomendado + ". Seguro que lo disfrutas :)");
+  }
+  else{System.out.println("Lo siento, no tenemos recomendaciones para ese género :/");}
+  menu(libreria, sc);
   }
   
 //MAIN    
