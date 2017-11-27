@@ -150,15 +150,14 @@ public class proyeXto_v2{
     System.out.println("¿Qué edad tienes?");
     int edad=0;
     //Evitar edad negativa
-    boolean repetir=true;
-    while(repetir){
+    boolean repetir=false 
+    do{
       edad=sc.nextInt();
-      if (edad>0){
-        repetir = false;
-      } else {
+      if (edad<=0){
+        repetir = true;
         System.out.println("Introduce la edad correctamente");
       }
-    }
+    } while (repetir);   
     //Descuentos
     if (edad<18||edad>65){
       System.out.println("Genial tienes un descuento del 10% en todos los libros :)");
