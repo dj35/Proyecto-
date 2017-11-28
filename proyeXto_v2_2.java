@@ -216,11 +216,27 @@ public class proyeXto_v2_2{
           libreria[j][0]=sc.next();
           System.out.println("Introduce el autor:");
           libreria[j][1]=sc.next(); 
-          System.out.println("Introduce el género:");
-          System.out.println(" 1. Policial \n 2. Thriller \n 3. Romántico \n 4. Aventura \n 5. Fantasía \n 6. Terror \n 7. Ciencia Ficción");
-          libreria[j][2]=sc.next(); 
-          System.out.println("Introduce el año:");
-          libreria[j][3]=sc.next(); 
+          //Obligar a que meta un genero correcto
+          boolean repetir=true; 
+          do{
+            System.out.println("Introduce el género:");
+            System.out.println(" 1. Policial \n 2. Thriller \n 3. Romantico \n 4. Aventura \n 5. Fantasia \n 6. Terror \n 7. Ciencia Ficcion");
+            libreria[j][2]=sc.next();                   
+            if ((libreria[j][2].toLowerCase().equals("policial"))||(libreria[j][2].toLowerCase().equals("thriller"))||(libreria[j][2].toLowerCase().equals("romantico"))||(libreria[j][2].toLowerCase().equals("aventura"))||(libreria[j][2].toLowerCase().equals("fantasia"))||(libreria[j][2].toLowerCase().equals("terror"))||(libreria[j][2].toLowerCase().equals("ciencia ficcion"))){
+             repetir=false;
+            }
+          } while (repetir);
+          //Obligar a que meta año correcto
+          boolean seguir=true;
+          do{
+            System.out.println("Introduce el año:");
+            libreria[j][3]=sc.next();
+            for (int i=0; i<2019; i++){
+              if (str2int(libreria[j][3])==i){
+                seguir=false;
+              }
+            }
+          } while (seguir);
           yaEsta=false;
         } 
       }
@@ -284,21 +300,21 @@ public class proyeXto_v2_2{
         //Compara filas buscando el mismo genero:
         for (int i=1; i<libreria.length; i++){
         int n=0;
-         for (int j=i+1; j<libreria.length; j++){
-           if (libreria[j][2]!=null && libreria[i][2].equals(libreria[j][2])){
-             n+=1;
-             //Permuta fila i+n y fila j:
-             String[]aux=new String[libreria[0].length];
-             for (int k=0; k<libreria[0].length; k++){
-               aux[k]=libreria[i+n][k];
-               libreria[i+n][k]=libreria[j][k];
-               libreria[j][k]=aux[k];
-             }
-           }
-         }
-       }
-       verLibreria(libreria, sc); 
-       break;
+        for (int j=i+1; j<libreria.length; j++){
+          if (libreria[j][2]!=null && libreria[i][2].equals(libreria[j][2])){
+            n+=1;
+            //Permuta fila i+n y fila j:
+            String[]aux=new String[libreria[0].length];
+            for (int k=0; k<libreria[0].length; k++){
+              aux[k]=libreria[i+n][k];
+              libreria[i+n][k]=libreria[j][k];
+              libreria[j][k]=aux[k];
+            }
+          }
+        }
+      }
+        verLibreria(libreria, sc); 
+        break;
       case '2':
         //Compara filas a partir de i buscando la maxima valoracion:
         for (int i=1; i<libreria.length-1; i++){
