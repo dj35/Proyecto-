@@ -194,6 +194,22 @@ public class proyeXto_v2_2{
   
 //FUNCIÓN VER LIBRERIA (en forma de tabla)
   public static void verLibreria(String[][]libreria, Scanner sc){
+    //Apaña los espacios en la tabla
+    for (int q=0; q<libreria[0].length; q++){
+      int mayorLongitud=0;
+      int mayorPos=0;
+      for (int w=1; w<libreria.length; w++){
+        if (libreria[w][q]!=null && libreria[w][q].length()>=libreria[mayorPos][q].length()){
+          mayorPos=w;
+          mayorLongitud=libreria[w][q].length();
+        }
+      }  
+      for (int r=0; r<libreria.length; r++){
+        while (libreria[r][q]!=null && libreria[r][q].length()<mayorLongitud){
+          libreria[r][q]+=" ";
+        }
+      }
+    }   
     String verTabla= "";
     for (int i=0; i<libreria.length; i++){
       verTabla= "";
@@ -373,24 +389,24 @@ public class proyeXto_v2_2{
     libreria[0][3]="AÑO";
     libreria[0][4]="VALORACIÓN";
     //He metido esto para probar funciones sin tener que introducir libros
-    libreria[1][0]="Tit1";
+    libreria[1][0]="Tit1111111";
     libreria[1][1]="Aut1";
-    libreria[1][2]="Gen1";
+    libreria[1][2]="policial";
     libreria[1][3]="1985";
     libreria[1][4]="10";
     libreria[2][0]="Tit2";
-    libreria[2][1]="Aut2";
-    libreria[2][2]="Gen2";
+    libreria[2][1]="Aut222222";
+    libreria[2][2]="thriller";
     libreria[2][3]="1995";
     libreria[2][4]="5";
     libreria[3][0]="Tit3";
     libreria[3][1]="Aut3";
-    libreria[3][2]="Gen1";
+    libreria[3][2]="policial";
     libreria[3][3]="2000";
     libreria[3][4]="7";
     libreria[4][0]="Tit4";
     libreria[4][1]="Aut4";
-    libreria[4][2]="Gen1";
+    libreria[4][2]="policial";
     libreria[4][3]="1999";
     libreria[4][4]="8"; 
     menu(libreria, sc);
