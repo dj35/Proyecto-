@@ -277,10 +277,48 @@ public class AutoBiblioEclipse {
 	        sc.nextLine();
 	        switch (respuesta){
 	          case 1:
+	        	System.out.print("Añade el nuevo autor");
+		          libreria[j][respuesta]=sc.nextLine();
+		          erroneo=false;
+		          break;
 	          case 2:
-	            System.out.print("Añade el nuevo valor");
-	            libreria[j][respuesta]=sc.nextLine();
-	            erroneo=false;
+	            System.out.print("Marque la tecla correspondiente al género a insertar:\n1. Policíaco\n2. Thriller\n3. Drama\n4. Acción\n5. Poesía\n6. Ciencia ficción");
+	            String tecla =sc.next();
+	            char tecla2 = tecla.charAt(0);
+	            switch(char2int(tecla2)) {
+	            case 1:
+	            	libreria[j][2]="Policiaco";
+		            erroneo=false;
+		            System.out.println("Perfecto, ahora el género del libro es \"Policíaco\"\n");
+	            	break;
+	            case 2:
+	            	libreria[j][2]="Thriller";
+		            erroneo=false;
+		            System.out.println("Perfecto, ahora el género del libro es \"Thriller\"\n");
+	            	break;
+	            case 3:
+	            	libreria[j][2]="Drama";
+		            erroneo=false;
+		            System.out.println("Perfecto, ahora el género del libro es \"Drama\"\n");
+	            	break;
+	            case 4:
+	            	libreria[j][2]="Accion";
+		            erroneo=false;
+		            System.out.println("Perfecto, ahora el género del libro es \"Acción\"\n");
+	            	break;
+	            case 5:
+	            	libreria[j][2]="Poesia";
+		            erroneo=false;
+		            System.out.println("Perfecto, ahora el género del libro es \"Poesía\"\n");
+	            	break;
+	            case 6:
+	            	libreria[j][2]="Ciencia ficcion";
+		            erroneo=false;
+		            System.out.println("Perfecto, ahora el género del libro es \"Ciencia ficción\"\n");
+	            	break;
+	            default:
+		            System.err.println("Valor no válido, pruebe otra vez");
+	            }
 	            break;
 	          case 3:
 	          case 5:
@@ -334,6 +372,11 @@ public class AutoBiblioEclipse {
 	        num=(int)(temp*Math.pow(10, i))+num; //Math.pow(a, b) se usa para calcular potencias, donde a es la base y b el exponente
 	      }
 	    }
+	    return num;
+	  }
+	//FUNCIÓN AUXILIAR PARA PASAR UN CHAR A UN INT
+	  public static int char2int(char caracter){
+	    int num = (int)(caracter) -48;
 	    return num;
 	  }
 	  
