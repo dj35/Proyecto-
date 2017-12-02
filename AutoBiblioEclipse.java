@@ -102,19 +102,23 @@ public class AutoBiblioEclipse {
 	  //FUNCIÓN DESCUENTOS
 	  public static void descuento(String[][]libreria){
 	    System.out.println("¿Qué edad tienes?");
-	    int edad=0;
+	    String edad = "0";
 	    //Evitar edad negativa
 	    boolean repetir=true;
 	    while(repetir){
-	      edad=sc.nextInt();
-	      if (edad>0){
-	        repetir = false;
-	      } else {
-	        System.out.println("Introduce la edad correctamente");
-	      }
+	    	edad =sc.next();
+            if (edad.charAt(0)>48 && edad.charAt(0)<58){
+            	if (string2int(edad)>0){
+        	        repetir = false;
+        	      } else {
+        	        System.out.println("Introduce la edad correctamente");
+        	      }
+            }else{
+              System.err.println("Error. Añade el valor en numérico");
+            }
 	    }
 	    //Descuentos
-	    if (edad<18||edad>65){
+	    if (string2int(edad)<18||string2int(edad)>65){
 	      System.out.println("Genial tienes un descuento del 10% en todos los libros :)");
 	    }else{
 	      System.out.println("Vaya, prueba con otra cosa: \n Pulse 1 Si es cliente premium de la librería\n Pulse 2 si tiene familia numerosa\n Pulse 3 si está en paro\n Pulse cualquier otro número si no cumple ninguno de los requisitos");
@@ -177,9 +181,9 @@ public class AutoBiblioEclipse {
 	    } while (horaValida(hora, minutos));
 	//Abierta/cerrada
 	    if (horarioApertura(hora, minutos)){
-	      System.out.println("¡Qué bien! La librería está abierta");
+	      System.out.println("¡Qué bien! La librería está abierta\n");
 	    } else {
-	      System.out.println("Lo siento, la librería está cerrada...");
+	      System.out.println("Lo siento, la librería está cerrada...6");
 	    }
 	    menu(libreria);
 	  }
@@ -258,7 +262,7 @@ public class AutoBiblioEclipse {
 	    while(j<libreria.length && !libreria[j][0].equalsIgnoreCase(nombre)){
 	      j++;
 	    }
-	    if (j<=libreria.length){
+	    if (j==libreria.length){
 	      System.out.println("Lo sentimos, no hay ningún libro llamado \"" + nombre+ "\" en la biblioteca.\n");
 	    }else{
 	      boolean erroneo=true;
@@ -309,7 +313,7 @@ public class AutoBiblioEclipse {
 	  
 	  }
 	  
-	  //FUNCIÓN 
+	  //FUNCIÓN PARA SABER CUÁNTOS LIBROS HAY EN UNA LIBRERÍA
 	  public static void cuantosLibros(String[][] libreria){
 	    int s =0;
 	    for(int i=1; i<libreria.length; i++){
@@ -319,7 +323,7 @@ public class AutoBiblioEclipse {
 	    System.out.println("Actualmente hay "+ s + " libros");
 	  }
 	  
-	  //FUNCIÓN
+	  //FUNCIÓN AUXILIAR PARA PASAR UN STRING A UN INT
 	  public static int string2int(String texto){
 	    int num=0;
 	    int temp=0;
