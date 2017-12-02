@@ -285,7 +285,8 @@
 	     }
 	     if (j==libreria.length){
 	       System.out.println("Lo sentimos, no hay ningún libro llamado \"" + nombre+ "\" en la biblioteca.\n");
-	     }else{
+	     }
+	     else{
 	       boolean erroneo=true;
 	       do{
 	         System.out.println("Pulse 1.) para cambiar el autor");
@@ -342,9 +343,22 @@
 	             }
 	             break;
 	           case 3:
+	        	   boolean estado =true;
+		             do{
+		               System.out.print("Añade el nuevo valor");
+		               String valor =sc.next();
+		               if (valor.charAt(0)>48 && valor.charAt(0)<58 && string2int(valor)>0 && string2int(valor)<2018){
+		                 libreria[j][respuesta]=valor;
+		                 estado= false;
+		               }else{
+		                 System.err.println("Error. Añade el valor en numérico");
+		               }
+		             }while(estado);
+		             erroneo =false;  
+		             break;
 	           case 5:
 	           case 6:
-	             boolean estado =true;
+	             estado =true;
 	             do{
 	               System.out.print("Añade el nuevo valor");
 	               String valor =sc.next();
@@ -368,6 +382,7 @@
 	       }while(erroneo);
 	       
 	     }
+	     j = 0;
 	     return libreria;
 	   
 	   }
@@ -612,7 +627,7 @@
 	     //Ya solo hace falta este scanner para todas las funciones
 	     
 	     //Inicializa un array (7 filas->6 libros, 5 columnas->título+4 atributos)
-	     String[][]libreria=new String[8][5]; 
+	     String[][]libreria=new String[10][5]; 
 	     libreria[0][0]="TÍTULO";
 	     libreria[0][1]="AUTOR";
 	     libreria[0][2]="GÉNERO";
