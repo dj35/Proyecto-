@@ -230,29 +230,38 @@ public class proyeXto_v2{
     menu(libreria, sc);
   }
      
-    
+  //Convienrte un string(que sea un numero positivo) en un int
+  public static int str2int(String cadena){
+    int numero=0;
+    for (int i=0; i<cadena.length(); i++){
+      numero+=(cadena.charAt(cadena.length()-1-i)-'1'+1)*Math.pow(10,i);
+    }
+    return numero;
+  }
+  
 //FUNCION PEDIR RECOMENDACIONES?
-  //La idea es que el usuario indique un género que le guste y la función le devuelva el ejemplar de ese género con mejor valoración
+ //La idea es que el usuario indique un género que le guste y la función le devuelva el ejemplar de ese género con mejor valoración
   public static void recomienda (String[][]libreria, Scanner sc){
-   System.out.println("¿Cuál es tu género favorito?");
+    System.out.println("¿Cuál es tu género favorito?");
     // Mostrar las distintas opciones
-    System.out.println("1. Género A \n 2. Género B \n ... \n N. Género X");
-    int gen = sc.nextInt();
+    System.out.println(" 1. Policial \n 2. Thriller \n 3. Romántico \n 4. Aventura \n 5. Fantasía \n 6. Terror \n 7. Ciencia Ficción");
+    String gen =sc.next().toLowerCase();
     int maximaValoracion = 0;
     String libroRecomendado = "";
-    for(int g = 1; g<8; g++){
-      //gen vamos a tener que ponerlo como string para que funcione esto:
-      if(libreria[g][2]==gen){
-        if(libreria[g][4]>=maximaValoracion){
+    for(int g=1; g<libreria.length; g++){
+      if(libreria[g][2].equals(gen)){
+        if(str2int(libreria[g][4])>=maximaValoracion){
+          maximaValoracion = str2int(libreria[g][4]);
           libroRecomendado = libreria[g][0];
         }
       }
     }
-  if(libroRecomendado!=""){
-    System.out.println("Quizás te guste " + libroRecomendado + ". Seguro que lo disfrutas :)");
-  }
-  else{System.out.println("Lo siento, no tenemos recomendaciones para ese género :/");}
-  menu(libreria, sc);
+    if(libroRecomendado!=""){
+      System.out.println("Quizás te guste " + libroRecomendado + ". Seguro que lo disfrutas :)");
+    }
+    else{System.out.println("Lo siento, no tenemos recomendaciones para ese género :/");
+    }
+    menu(libreria, sc);
   }
   
 //MAIN    
