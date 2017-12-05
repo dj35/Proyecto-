@@ -10,7 +10,7 @@ public class AutoBiblioFinal2{
    public static void menu(String[][]libreria){
    boolean seguir = false; 
     do {
-  System.out.println("Seleccione la opción que desea ejecutar: ");
+  System.out.println("\nSeleccione la opción que desea ejecutar: ");
      System.out.println("1. Añadir o eliminar libro");
      System.out.println("2. Ver libreria ahora");
      System.out.println("3. Añadir características a un libro");
@@ -99,7 +99,9 @@ public class AutoBiblioFinal2{
        for (int j=0; j<libreria[i].length; j++){
          verTabla+= "  "+libreriaVer[i][j];         
        }
-       System.out.println(verTabla);
+       if(libreria[i][0]!=""){
+         System.out.println(verTabla);
+       }
      }
    }
    
@@ -596,11 +598,21 @@ public class AutoBiblioFinal2{
        System.out.println("");
      }
      String[][] libreria={
-      {"T","A","G","A","V","P"},
+      {"Título","Autor","Género","Año","Valoración","Páginas","Marcapáginas"},
       {"prueba1","paco","drama","111","3","123","50"},
       {"prueba2","pedro","drama","1234","3","123"},
-      {"prueba3","paco","sex","111","8","123"},
-      {"prueba4","paco","sex","1234","821","1785"}};
+      {"prueba3","paco","Poesía","111","8","123"},
+      {"prueba4","paco","Acción","1234","821","1785"}
+      {"","","","","","",}
+      {"","","","","","",}
+      {"","","","","","",}
+      {"","","","","","",}
+      {"","","","","","",}
+      {"","","","","","",}
+      {"","","","","","",}
+      {"","","","","","",}
+      {"","","","","","",}
+      {"","","","","","",}};
     
     
      marcapag(libreria);
@@ -612,38 +624,23 @@ public class AutoBiblioFinal2{
      //Ya solo hace falta este scanner para todas las funciones
      
      //Inicializa un array (7 filas->6 libros, 5 columnas->título+4 atributos)
-     String[][]libreria=new String[8][5]; 
-     libreria[0][0]="TÍTULO";
-     libreria[0][1]="AUTOR";
-     libreria[0][2]="GÉNERO";
-     libreria[0][3]="AÑO";
-     libreria[0][4]="VALORACIÓN";
-     for(int i=1; i<libreria.length; i++){
-        for(int j=0; j<libreria[i].length;j++){
-          libreria[i][j]="";
-        }
-      }
-     //He metido esto para probar funciones sin tener que introducir libros
-     libreria[1][0]="Tit1111111";
-     libreria[1][1]="Aut1";
-     libreria[1][2]="Policiaco";
-     libreria[1][3]="1985";
-     libreria[1][4]="10";
-     libreria[2][0]="Tit2";
-     libreria[2][1]="Aut222222";
-     libreria[2][2]="Thriller";
-     libreria[2][3]="1995";
-     libreria[2][4]="5";
-     libreria[3][0]="Tit3";
-     libreria[3][1]="Aut3";
-     libreria[3][2]="Policiaco";
-     libreria[3][3]="2000";
-     libreria[3][4]="7";
-     libreria[4][0]="Tit4";
-     libreria[4][1]="Aut4";
-     libreria[4][2]="policial";
-     libreria[4][3]="1999";
-     libreria[4][4]="8"; 
-     menu(libreria);
+      String[][] libreria={
+      {"Título","Autor","Género","Año","Valoración","Páginas","Marcapáginas"},
+      {"prueba1","paco","drama","111","3","123","50"},
+      {"prueba2","pedro","drama","1234","3","123","2"},
+      {"prueba3","paco","Poesía","111","8","123","2"},
+      {"prueba4","paco","Acción","1234","821","1785","2"},
+      {"","","","","","",""},
+      {"","","","","","",""},
+      {"","","","","","",""},
+      {"","","","","","",""},
+        
+      {"","","","","","",""},
+      {"","","","","","",""},
+      {"","","","","","",""},
+      {"","","","","","",""},
+      {"","","","","","",""},
+      {"","","","","","",""}};
+      menu(libreria);
    }
 }
