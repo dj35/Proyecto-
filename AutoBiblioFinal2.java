@@ -3,20 +3,21 @@ public class AutoBiblioFinal2{
   
    final public static Scanner sc= new Scanner(System.in); //Declaro el Scanner de manera global, de esta forma no tengo que declararlo en cada funcion
    
-   //FUNCI”N MEN⁄
+   //FUNCI√ìN MEN√ö
    public static void menu(String[][]libreria){
      boolean seguir = false; 
      do {
-       System.out.println("\nSeleccione la opciÛn que desea ejecutar: ");
-       System.out.println("1. AÒadir o eliminar libro");
+       System.out.println("\nSeleccione la opci√≥n que desea ejecutar: ");
+       System.out.println("1. A√±adir o eliminar libro");
        System.out.println("2. Ver libreria ahora");
-       System.out.println("3. AÒadir caracterÌsticas a un libro");
-       System.out.println("4. Contar libros seg˙n criterio");
-       System.out.println("5. øEstamos abiertos?");
-       System.out.println("6. øTengo alg˙n descuento?");
-       System.out.println("7. Pedir recomendaciones");
-       System.out.println("8. Ordenar libros seg˙n criterio"); 
-       System.out.println("9. Apagar programa"); 
+       System.out.println("3. A√±adir caracter√≠sticas a un libro");
+       System.out.println("4. Contar libros seg√∫n g√©nero");
+       System.out.println("5. ¬øEstamos abiertos?");
+       System.out.println("6. ¬øTengo alg√∫n descuento?");
+       System.out.println("7. Filtrar libros");
+       System.out.println("8. Ordenar libros seg√∫n criterio");
+       System.out.println("9. Consulta tus marcap√°ginas");
+       System.out.println("10. Apagar programa"); 
        switch (sc.nextInt()){
          case 1:
            seguir=true;
@@ -51,20 +52,24 @@ public class AutoBiblioFinal2{
            ordenar(libreria);
            break;
          case 9:
-        seguir=false;
-        System.exit(0);
-        break; 
+           seguir=true;
+           marcapag(libreria);
+           break;
+         case 10:
+          seguir=false;
+          System.exit(0);
+          break; 
          default: 
-           System.out.println("OpciÛn incorrecta, pruebe otra vez\n");
+           System.out.println("Opci√≥n incorrecta, pruebe otra vez\n");
            seguir=true;    
        }
      }while(seguir);
    }
    
    
-   //FUNCI”N VER LIBRERIA (en forma de tabla)
+   //FUNCI√ìN VER LIBRERIA (en forma de tabla)
    public static void verLibreria(String[][]libreria){
-     //ApaÒa los espacios en la tabla
+     //Apa√±a los espacios en la tabla
      String[][]libreriaVer=new String[libreria.length][libreria[0].length];
      for (int i=0; i<libreria.length; i++) {
        for (int j=0; j<libreria[0].length; j++){
@@ -99,9 +104,9 @@ public class AutoBiblioFinal2{
    }
    
    
-   //FUNCI”N DESCUENTOS
+   //FUNCI√ìN DESCUENTOS
    public static void descuento(String[][]libreria){
-     System.out.println("øQuÈ edad tienes?");
+     System.out.println("¬øQu√© edad tienes?");
      String edad = "0";
      //Evitar edad negativa
      boolean repetir=true;
@@ -114,28 +119,28 @@ public class AutoBiblioFinal2{
                  System.out.println("Introduce la edad correctamente");
                }
             }else{
-              System.err.println("Error. AÒade el valor en numÈrico");
+              System.err.println("Error. A√±ade el valor en num√©rico");
             }
      }
      //Descuentos
      if (string2int(edad)<18||string2int(edad)>65){
        System.out.println("Genial tienes un descuento del 10% en todos los libros :)");
      }else{
-       System.out.println("Vaya, prueba con otra cosa: \n Pulse 1 Si es cliente premium de la librerÌa\n Pulse 2 si tiene familia numerosa\n Pulse 3 si est· en paro\n Pulse cualquier otro n˙mero si no cumple ninguno de los requisitos");
+       System.out.println("Vaya, prueba con otra cosa: \n Pulse 1 Si es cliente premium de la librer√≠a\n Pulse 2 si tiene familia numerosa\n Pulse 3 si est√° en paro\n Pulse cualquier otro n√∫mero si no cumple ninguno de los requisitos");
        int opcionDescuento=sc.nextInt();
        switch (opcionDescuento){
          case 1: case 2: case 3:
            System.out.println("Genial tienes un descuento del 10% en todos los libros :)");
            break;
          default:
-           System.out.println("Vaya, no tienes ning˙n descuento");
+           System.out.println("Vaya, no tienes ning√∫n descuento");
            break;  
        }
      }
    }
    
    
-   //Comprueba que la hora est· entre 0-24 y los minutos entre 0-60
+   //Comprueba que la hora est√° entre 0-24 y los minutos entre 0-60
    public static boolean horaValida(int hora, int minutos){
      if (hora>=0 && hora<24 && minutos>=0 && minutos<60){
        return false;
@@ -171,7 +176,7 @@ public class AutoBiblioFinal2{
    //FUNCION PRINCIPAL HORARIO (llama a horaValida para ver si la hora es valida y a horarioApertura para ver si esta en el rango de horas correspondiente
    public static void horario(String[][]libreria){
      int hora, minutos;
- //Lee hora y minutos y llama a la funciÛn haste que tenga un valor valido  
+ //Lee hora y minutos y llama a la funci√≥n haste que tenga un valor valido  
      do {
        System.out.println("Introduce la hora");
        hora = sc.nextInt();
@@ -180,13 +185,13 @@ public class AutoBiblioFinal2{
      } while (horaValida(hora, minutos));
  //Abierta/cerrada
      if (horarioApertura(hora, minutos)){
-       System.out.println("°QuÈ bien! La librerÌa est· abierta\n");
+       System.out.println("¬°Qu√© bien! La librer√≠a est√° abierta\n");
      } else {
-       System.out.println("Lo siento, la librerÌa est· cerrada...6");
+       System.out.println("Lo siento, la librer√≠a est√° cerrada...");
      }
    }
    
-   //FUNCI”N CONTAR G…NEROS (Lee tÌtulo y gÈnero de una cantidad de libros determinada por el usuario y cuenta cu·ntos hay de cada genero.)
+   //FUNCI√ìN CONTAR G√âNEROS (Lee t√≠tulo y g√©nero de una cantidad de libros determinada por el usuario y cuenta cu√°ntos hay de cada genero.)
    public static void contadorGeneros(String[][]libreria){
     int contadorPolicial=0,contadorThriller=0,contadorDrama=0,contadorAccion=0,contadorPoesia=0,contadorCienciaFiccion=0;
     String genero1="Policiaco",genero2="Thriller", genero3="Drama",
@@ -221,31 +226,31 @@ public class AutoBiblioFinal2{
    }
    
    
-   //FUNCI”N A—ADIR Y ELIMINAR LIBROS (Recoge una de las dos opciones y en el caso de aÒadir busca una posiciÛn vacÌa para guardar el tÌtulo y en el caso de eliminar, busca el libro que se desee eliminar y lo borra de la librerÌa)
+   //FUNCI√ìN A√ëADIR Y ELIMINAR LIBROS (Recoge una de las dos opciones y en el caso de a√±adir busca una posici√≥n vac√≠a para guardar el t√≠tulo y en el caso de eliminar, busca el libro que se desee eliminar y lo borra de la librer√≠a)
    public static String[][] entraSale(String[][] libreria){
      boolean erroneo=false;
      
      do{
-       System.out.print("Pulse 1.) si quiere aÒadir un nuevo libro.\nPulse 2.) para eliminar un ejemplar\n");
+       System.out.print("Pulse 1.) si quiere a√±adir un nuevo libro.\nPulse 2.) para eliminar un ejemplar\n");
        char eleccion = sc.next().charAt(0);
        switch(eleccion){
          case '1':
            int i=1;
-           while(i<libreria.length && libreria[i][0]!=""){ // Sugerencia, podrÌa ponerse la segunda condiciÛn como !(libreria[i][0].equals(""))
+           while(i<libreria.length && libreria[i][0]!=""){ // Sugerencia, podr√≠a ponerse la segunda condici√≥n como !(libreria[i][0].equals(""))
              i++;
            }
            if (i==libreria.length){
              System.out.println("Lo sentimos, no hay espacio en la biblioteca.\n");
            }else{
-             System.out.print("øCÛmo se llama el libro que quieres aÒadir?\n");
+             System.out.print("¬øC√≥mo se llama el libro que quieres a√±adir?\n");
              sc.nextLine();
              libreria[i][0]=sc.nextLine();
-             System.out.println("Ya hemos almacenado t˙ libro\n");
+             System.out.println("Ya hemos almacenado tu libro\n");
            }
            erroneo = false;
            break;
          case '2':
-           System.out.print("øCÛmo se llama el libro que quieres eliminar?\n");
+           System.out.print("¬øC√≥mo se llama el libro que quieres eliminar?\n");
            int j=1;
            sc.nextLine();
            String nombre =sc.nextLine();
@@ -253,7 +258,7 @@ public class AutoBiblioFinal2{
              j++;
            }
            if (j==libreria.length){
-             System.out.println("Lo sentimos, no hay ning˙n libro llamado " + nombre+ " en la biblioteca.\n");
+             System.out.println("Lo sentimos, no hay ning√∫n libro llamado " + nombre+ " en la biblioteca.\n");
            }else{
              for(int h = 0; h<libreria[0].length;h++) {
                libreria[j][h]="";  
@@ -266,7 +271,7 @@ public class AutoBiblioFinal2{
            erroneo = false;
            break;
          default:
-           System.err.println("Valor no v·lido, pruebe otra vez");
+           System.err.println("Valor no v√°lido, pruebe otra vez");
            erroneo= true;
        }
      }while(erroneo);
@@ -284,71 +289,71 @@ public class AutoBiblioFinal2{
      return libreria;
    }
        
-   //FUNCI”N MODIFICAR CARACTERÕSTICAS
+   //FUNCI√ìN MODIFICAR CARACTER√çSTICAS
    public static String[][] caracteristica(String[][] libreria){
    sc.nextLine();
-      System.out.print("øCÛmo se llama el libro al que quiere aÒadirle una caracterÌstica?");
+      System.out.print("¬øC√≥mo se llama el libro al que quiere a√±adirle una caracter√≠stica?");
      String nombre =sc.nextLine();
      int j=1;
      while(j<libreria.length && !libreria[j][0].equalsIgnoreCase(nombre)){
        j++;
      }
      if (j==libreria.length){
-       System.out.println("Lo sentimos, no hay ning˙n libro llamado \"" + nombre+ "\" en la biblioteca.\n");
+       System.out.println("Lo sentimos, no hay ning√∫n libro llamado \"" + nombre+ "\" en la biblioteca.\n");
      }else{
        boolean erroneo=true;
        do{
          System.out.println("Pulse 1.) para cambiar el autor");
-         System.out.println("Pulse 2.) para cambiar el gÈnero");
-         System.out.println("Pulse 3.) para cambiar el aÒo de publicaciÛn");
-         System.out.println("Pulse 4.) para aÒadir una nueva valoraciÛn");
-         System.out.println("Pulse 5.) para cambiar el n˙mero de p·ginas");
+         System.out.println("Pulse 2.) para cambiar el g√©nero");
+         System.out.println("Pulse 3.) para cambiar el a√±o de publicaci√≥n");
+         System.out.println("Pulse 4.) para a√±adir una nueva valoraci√≥n");
+         System.out.println("Pulse 5.) para cambiar el n√∫mero de p√°ginas");
          System.out.println("Pulse 6.) para cambiar el marcador\n");
          int respuesta= sc.nextInt();
          sc.nextLine();
          switch (respuesta){
            case 1:
-          System.out.print("AÒade el nuevo autor");
+          System.out.print("A√±ade el nuevo autor");
             libreria[j][respuesta]=sc.nextLine();
             erroneo=false;
             break;
            case 2:
-             System.out.print("Marque la tecla correspondiente al gÈnero a insertar:\n1. PolicÌaco\n2. Thriller\n3. Drama\n4. AcciÛn\n5. PoesÌa\n6. Ciencia ficciÛn");
+             System.out.print("Marque la tecla correspondiente al g√©nero a insertar:\n1. Polic√≠aco\n2. Thriller\n3. Drama\n4. Acci√≥n\n5. Poes√≠a\n6. Ciencia ficci√≥n");
              String tecla =sc.next();
              char tecla2 = tecla.charAt(0);
              switch(char2int(tecla2)) {
              case 1:
               libreria[j][2]="Policiaco";
               erroneo=false;
-              System.out.println("Perfecto, ahora el gÈnero del libro es \"PolicÌaco\"\n");
+              System.out.println("Perfecto, ahora el g√©nero del libro es \"Polic√≠aco\"\n");
               break;
              case 2:
               libreria[j][2]="Thriller";
               erroneo=false;
-              System.out.println("Perfecto, ahora el gÈnero del libro es \"Thriller\"\n");
+              System.out.println("Perfecto, ahora el g√©nero del libro es \"Thriller\"\n");
               break;
              case 3:
               libreria[j][2]="Drama";
               erroneo=false;
-              System.out.println("Perfecto, ahora el gÈnero del libro es \"Drama\"\n");
+              System.out.println("Perfecto, ahora el g√©nero del libro es \"Drama\"\n");
               break;
              case 4:
               libreria[j][2]="Accion";
               erroneo=false;
-              System.out.println("Perfecto, ahora el gÈnero del libro es \"AcciÛn\"\n");
+              System.out.println("Perfecto, ahora el g√©nero del libro es \"Acci√≥n\"\n");
               break;
              case 5:
               libreria[j][2]="Poesia";
               erroneo=false;
-              System.out.println("Perfecto, ahora el gÈnero del libro es \"PoesÌa\"\n");
+              System.out.println("Perfecto, ahora el g√©nero del libro es \"Poes√≠a\"\n");
               break;
              case 6:
               libreria[j][2]="Ciencia ficcion";
               erroneo=false;
-              System.out.println("Perfecto, ahora el gÈnero del libro es \"Ciencia ficciÛn\"\n");
+              System.out.println("Perfecto, ahora el g√©nero del libro es \"Ciencia ficci√≥n\"\n");
               break;
              default:
-              System.err.println("Valor no v·lido, pruebe otra vez");
+              System.err.println("Valor no v√°lido, pruebe otra vez");
              }
              break;
            case 3:
@@ -356,13 +361,13 @@ public class AutoBiblioFinal2{
            case 6:
              boolean estado =true;
              do{
-               System.out.print("AÒade el nuevo valor");
+               System.out.print("A√±ade el nuevo valor");
                String valor =sc.next();
                if (valor.charAt(0)>48 && valor.charAt(0)<58){
                  libreria[j][respuesta]=valor;
                  estado= false;
                }else{
-                 System.err.println("Error. AÒade el valor en numÈrico");
+                 System.err.println("Error. A√±ade el valor en num√©rico");
                }
              }while(estado);
              erroneo =false;  
@@ -372,7 +377,7 @@ public class AutoBiblioFinal2{
              erroneo = false;
              break;
            default:
-             System.err.println("Valor no v·lido, pruebe otra vez");
+             System.err.println("Valor no v√°lido, pruebe otra vez");
          }
          
        }while(erroneo);
@@ -382,7 +387,7 @@ public class AutoBiblioFinal2{
    
    }
    
-   //FUNCI”N PARA SABER CU¡NTOS LIBROS HAY EN UNA LIBRERÕA
+   //FUNCI√ìN PARA SABER CU√ÅNTOS LIBROS HAY EN UNA LIBRER√çA
    public static void cuantosLibros(String[][] libreria){
      int s =0;
      for(int i=1; i<libreria.length; i++){
@@ -392,7 +397,7 @@ public class AutoBiblioFinal2{
      System.out.println("Actualmente hay "+ s + " libros");
    }
    
-   //FUNCI”N AUXILIAR PARA PASAR UN STRING A UN INT
+   //FUNCI√ìN AUXILIAR PARA PASAR UN STRING A UN INT
    public static int string2int(String texto){
      int num=0;
      int temp=0;
@@ -406,7 +411,7 @@ public class AutoBiblioFinal2{
      return num;
    }
    
-   //FUNCI”N AUXILIAR PARA PASAR UN CHAR A UN INT
+   //FUNCI√ìN AUXILIAR PARA PASAR UN CHAR A UN INT
    public static int char2int(char caracter){
      int num = (int)(caracter) -48;
      return num;
@@ -418,12 +423,12 @@ public class AutoBiblioFinal2{
      double valAntDouble= string2int(valAnt);
      boolean estado=true;
      do{
-       System.out.print("øDel cero al 10 cu·nto te ha gustado el libro?");
+       System.out.print("¬øDel cero al 10 cu√°nto te ha gustado el libro?");
        valNuevDouble= sc.nextDouble();
        if(valNuevDouble<=10&& valNuevDouble>=0)
          estado =false;
        else
-         System.err.println("Error. Valor no v·lido");
+         System.err.println("Error. Valor no v√°lido");
      }while(estado);
      
      if (valAntDouble==0)
@@ -432,65 +437,65 @@ public class AutoBiblioFinal2{
        return ""+ (int)((valNuevDouble+valAntDouble)/2);
    }
    
-   //FUNCI”N MARCAP¡GINAS
+   //FUNCI√ìN MARCAP√ÅGINAS
    public static void marcapag(String[][] libreria){
-     System.out.print("øCÛmo se llama el libro que quieres saber por donde v·s?");
+     System.out.print("¬øC√≥mo se llama el libro que quieres saber por donde v√°s?");
      String nombre =sc.nextLine();
      int j=1;
      while(j<libreria.length && !libreria[j][0].equalsIgnoreCase(nombre)){
        j++;
      }
      if (j==libreria.length){
-       System.out.println("Lo sentimos, no hay ning˙n libro llamado " + nombre + " en la biblioteca.");
+       System.out.println("Lo sentimos, no hay ning√∫n libro llamado " + nombre + " en la biblioteca.");
      }else{
        int pagInt= string2int(libreria[j][5]);
-       int marcInt =string2int(libreria[j][6]);
+       int marcInt= string2int(libreria[j][6]);
        if(marcInt==0)
          System.out.println("Todavia no has comenzado a leer este libro");
        else if(marcInt<pagInt)
-         System.out.println("Vas por la p·gina " + marcInt + ", es decir, te quedan " + (pagInt-marcInt) + " p·gs. para acabar.");
+         System.out.println("Vas por la p√°gina " + marcInt + ", es decir, te quedan " + (pagInt-marcInt) + " p√°gs. para acabar.");
        else 
          System.out.println("Enhorabuena, ya has leido este libro");
      }
    }
    
-   //FUNCI”N FILTRAR
+   //FUNCI√ìN FILTRAR
    public static void filtrar(String[][] libreria){
      boolean estado = true;
-     //tomo "™" como null
-     String autor="™";
-     String genero="™";
-     String anyo="™";
-     String val="™";
-     String pag="™";    
+     //tomo "¬™" como null
+     String autor="¬™";
+     String genero="¬™";
+     String anyo="¬™";
+     String val="¬™";
+     String pag="¬™";    
      do{
        System.out.println("Pulse 1.) si quiere especificar el autor");
-       System.out.println("Pulse 2.) si quiere especificar el gÈnero");
-       System.out.println("Pulse 3.) si quiere especificar el el aÒo de publicaciÛn");
-       System.out.println("Pulse 4.) si quiere especificar la valoraciÛn");
-       System.out.println("Pulse 5.) si quiere especificar el n˙mero de p·ginas");
-       System.out.println("Pulse otro boton si no quiere aÒadir m·s limitaciones");
+       System.out.println("Pulse 2.) si quiere especificar el g√©nero");
+       System.out.println("Pulse 3.) si quiere especificar el el a√±o de publicaci√≥n");
+       System.out.println("Pulse 4.) si quiere especificar la valoraci√≥n");
+       System.out.println("Pulse 5.) si quiere especificar el n√∫mero de p√°ginas");
+       System.out.println("Pulse otro boton si no quiere a√±adir m√°s limitaciones");
        switch(sc.next().charAt(0)){
          case '1':
            sc.nextLine();
-           System.out.print("øCÛmo se llama el autor?");
+           System.out.print("¬øC√≥mo se llama el autor?");
            autor=sc.nextLine();
            break;
          case '2':
            sc.nextLine();
-           System.out.print("QuÈ genero quieres?");
+           System.out.print("Qu√© genero quieres?");
            genero=sc.nextLine();
            break;
          case '3':
-           System.out.print("Cu·ndo se publicÛ?");
+           System.out.print("Cu√°ndo se public√≥?");
            anyo=sc.next();
            break;
          case '4':
-           System.out.print("øQuÈ nota tiene?");
+           System.out.print("¬øQu√© nota tiene?");
            val= "" + (int)sc.nextDouble();
            break;
          case '5':
-           System.out.print("øCu·ntas p·ginas tiene?");
+           System.out.print("¬øCu√°ntas p√°ginas tiene?");
            pag=sc.next();
            break;
          default:
@@ -499,19 +504,19 @@ public class AutoBiblioFinal2{
      }while(estado);
      System.out.println("Los libros que cumplen dichas propiedades son: (en caso de no aparecer ninguno, se debe a que ninguno cumple dichas propiedades simultaneamente)");   
      for (int i=1; i<libreria.length; i++){
-       if(((autor=="™")||(libreria[i][1].equalsIgnoreCase(autor))) 
-            && ((genero=="™")||(libreria[i][2].equalsIgnoreCase(genero)))
-            &&((anyo=="™")||(libreria[i][3].equalsIgnoreCase(anyo)))
-            &&((val=="™")||(libreria[i][4].equalsIgnoreCase(val)))
-            &&((pag=="™")||(libreria[i][5].equalsIgnoreCase(pag)))){
+       if(((autor=="¬™")||(libreria[i][1].equalsIgnoreCase(autor))) 
+            && ((genero=="¬™")||(libreria[i][2].equalsIgnoreCase(genero)))
+            &&((anyo=="¬™")||(libreria[i][3].equalsIgnoreCase(anyo)))
+            &&((val=="¬™")||(libreria[i][4].equalsIgnoreCase(val)))
+            &&((pag=="¬™")||(libreria[i][5].equalsIgnoreCase(pag)))){
          System.out.println(libreria[i][0]);
        }
      }
    }
    
-   //FUNCI”N ORDENAR SEG⁄N CRITERIO
+   //FUNCI√ìN ORDENAR SEG√öN CRITERIO
    public static void ordenar(String[][]libreria){
-     System.out.println("Elige un criterio de ordenaciÛn: \n 1. GÈnero \n 2. ValoraciÛn \n 3. AÒo");
+     System.out.println("Elige un criterio de ordenaci√≥n: \n 1. G√©nero \n 2. Valoraci√≥n \n 3. A√±o");
      switch (sc.next().charAt(0)){
        case '1':
          //Compara filas buscando el mismo genero:
@@ -564,7 +569,7 @@ public class AutoBiblioFinal2{
    //MAIN    
    public static void main (String[]args){
       String[][] libreria={
-      {"TÌtulo","Autor","GÈnero","AÒo","ValoraciÛn","P·ginas","Marcap·ginas"},
+      {"T√≠tulo","Autor","G√©nero","A√±o","Valoraci√≥n","P√°ginas","Marcap√°ginas"},
       {"prueba1","paco","drama","111","3","123","50"},
       {"prueba2","pedro","drama","1234","3","123","2"},
       {"prueba3","paco","Poesia","111","8","123","2"},
