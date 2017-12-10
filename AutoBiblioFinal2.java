@@ -57,7 +57,6 @@ public class AutoBiblioFinal2{
            break;
          case 10:
           seguir=false;
-          System.exit(0);
           break; 
          default: 
            System.out.println("Opción incorrecta, pruebe otra vez\n");
