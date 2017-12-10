@@ -387,16 +387,6 @@ public class AutoBiblioFinal2{
    
    }
    
-   //FUNCIÓN PARA SABER CUÁNTOS LIBROS HAY EN UNA LIBRERÍA
-   public static void cuantosLibros(String[][] libreria){
-     int s =0;
-     for(int i=1; i<libreria.length; i++){
-       if (libreria[i][0]!="")
-         s++; 
-     }
-     System.out.println("Actualmente hay "+ s + " libros");
-   }
-   
    //FUNCIÓN AUXILIAR PARA PASAR UN STRING A UN INT
    public static int string2int(String texto){
      int num=0;
@@ -570,10 +560,10 @@ public class AutoBiblioFinal2{
    public static void main (String[]args){
       String[][] libreria={
       {"Título","Autor","Género","Año","Valoración","Páginas","Marcapáginas"},
-      {"prueba1","paco","drama","111","3","123","50"},
-      {"prueba2","pedro","drama","1234","3","123","2"},
-      {"prueba3","paco","Poesia","111","8","123","2"},
-      {"prueba4","paco","Accion","1234","821","1785","2"},
+      {"Origen","Dan Brown","Thriller","2017","6","640",""},
+      {"Eva","Arturo Pérez Reverte","Acción","2017","","400",""},
+      {"1984","George Orwell","Drama","1949","8","352",""},
+      {"Asesinato en el Orient Express","Agatha Christie","Thriller","1932","9","240",""},
       {"","","","","","",""},
       {"","","","","","",""},
       {"","","","","","",""},
