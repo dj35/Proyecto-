@@ -37,11 +37,11 @@ public class AutoBiblioFinal2{
            break; 
          case 5:
            seguir=true;
-           horario(libreria);
+           horario();
            break;
          case 6:
            seguir=true;
-           descuento(libreria);
+           descuento();
            break;
          case 7:
            seguir=true;
@@ -105,7 +105,7 @@ public class AutoBiblioFinal2{
    
    
    //FUNCIÓN DESCUENTOS
-   public static void descuento(String[][]libreria){
+   public static void descuento(){
      System.out.println("¿Qué edad tienes?");
      String edad = "0";
      //Evitar edad negativa
@@ -174,7 +174,7 @@ public class AutoBiblioFinal2{
    
    
    //FUNCION PRINCIPAL HORARIO (llama a horaValida para ver si la hora es valida y a horarioApertura para ver si esta en el rango de horas correspondiente
-   public static void horario(String[][]libreria){
+   public static void horario(){
      int hora, minutos;
  //Lee hora y minutos y llama a la función haste que tenga un valor valido  
      do {
