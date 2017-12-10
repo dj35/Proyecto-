@@ -429,6 +429,7 @@ public class AutoBiblioFinal2{
    
    //FUNCIÓN MARCAPÁGINAS
    public static void marcapag(String[][] libreria){
+     sc.nextLine();
      System.out.print("¿Cómo se llama el libro que quieres saber por donde vás?");
      String nombre =sc.nextLine();
      int j=1;
@@ -560,10 +561,10 @@ public class AutoBiblioFinal2{
    public static void main (String[]args){
       String[][] libreria={
       {"Título","Autor","Género","Año","Valoración","Páginas","Marcapáginas"},
-      {"Origen","Dan Brown","Thriller","2017","6","640",""},
-      {"Eva","Arturo Pérez Reverte","Acción","2017","","400",""},
+      {"Origen","Dan Brown","Thriller","2017","6","640","500"},
+      {"Eva","Arturo Pérez Reverte","Accion","2017","","400","20"},
       {"1984","George Orwell","Drama","1949","8","352",""},
-      {"Asesinato en el Orient Express","Agatha Christie","Thriller","1932","9","240",""},
+      {"Asesinato en el Orient Express","Agatha Christie","Thriller","1932","9","240","25"},
       {"","","","","","",""},
       {"","","","","","",""},
       {"","","","","","",""},
